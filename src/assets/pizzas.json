@@ -1,7 +1,7 @@
 [
   {
     "id": 0,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EEAA3DCE1E36DB983445A578830144.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EEAA3DCE1E36DB983445A578830144.avif",
     "title": "Песто",
     "types": [0, 1],
     "sizes": [26, 30, 40],
@@ -11,7 +11,7 @@
   },
   {
     "id": 1,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5F19C441CF95B598F6E5E4C5FC.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5F19C441CF95B598F6E5E4C5FC.avif",
     "title": "Итальянский цыпленок",
     "types": [0],
     "sizes": [26, 40],
@@ -21,7 +21,7 @@
   },
   {
     "id": 2,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5EF5CC13A490103B92A7737459.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5EF5CC13A490103B92A7737459.avif",
     "title": "Двойной цыпленок",
     "types": [0],
     "sizes": [26, 40],
@@ -31,7 +31,7 @@
   },
   {
     "id": 3,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5EEAB632F58FA9238A2CC13BBB.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5EEAB632F58FA9238A2CC13BBB.avif",
     "title": "Деревенская",
     "types": [1],
     "sizes": [26, 30, 40],
@@ -41,7 +41,7 @@
   },
   {
     "id": 4,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5F0C8EA951B957406D02CA3C4D.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5F0C8EA951B957406D02CA3C4D.avif",
     "title": "Чизбургер-пицца",
     "types": [0, 1],
     "sizes": [26, 30, 40],
@@ -51,7 +51,7 @@
   },
   {
     "id": 5,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5ED4C9050D84B1932A18396C2E.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5ED4C9050D84B1932A18396C2E.avif",
     "title": "Крэйзи пепперони",
     "types": [0],
     "sizes": [30, 40],
@@ -61,7 +61,7 @@
   },
   {
     "id": 6,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EF1EB095B2BBDE8E1230BD91995D9D.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EF1EB095B2BBDE8E1230BD91995D9D.avif",
     "title": "Чикен бамбони",
     "types": [0, 1],
     "sizes": [26, 30, 40],
@@ -71,7 +71,7 @@
   },
   {
     "id": 7,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5EE11701CB9907D0B38BBCFFAA.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5EE11701CB9907D0B38BBCFFAA.avif",
     "title": "Маргарита",
     "types": [0, 1],
     "sizes": [26, 30, 40],
@@ -81,7 +81,7 @@
   },
   {
     "id": 8,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5EDE8F665C89A9328216FE2126.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5EDE8F665C89A9328216FE2126.avif",
     "title": "Четыре сезона",
     "types": [0, 1],
     "sizes": [26, 30, 40],
@@ -91,7 +91,7 @@
   },
   {
     "id": 9,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EE7D5EE11701CB9907D0B38BBCFFAA.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EE7D5EE11701CB9907D0B38BBCFFAA.avif",
     "title": "Овощи и грибы 🌱",
     "types": [0, 1],
     "sizes": [26, 30, 40],
@@ -101,7 +101,7 @@
   },
   {
     "id": 10,
-    "imageUrl": "https://media.dodostatic.net/image/r:292x292/11EF1EB0F2E525A6963C334B9EAF6848.avif",
+    "image": "https://media.dodostatic.net/image/r:292x292/11EF1EB0F2E525A6963C334B9EAF6848.avif",
     "title": "Креветки со сладким чили",
     "types": [0, 1],
     "sizes": [26, 30, 40],
