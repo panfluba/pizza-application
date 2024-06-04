@@ -77,3 +77,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - [https://reactrouter.com/](https://reactrouter.com/) - React Router
 - [CSS Grid Generator](https://cssgrid-generator.netlify.app/)
 - [Paginate](https://github.com/AdeleD/react-paginate)
+- [Redux Toolkit](https://redux-toolkit.js.org/tutorials/quick-start)
