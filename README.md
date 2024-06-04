@@ -78,3 +78,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - [CSS Grid Generator](https://cssgrid-generator.netlify.app/)
 - [Paginate](https://github.com/AdeleD/react-paginate)
 - [Redux Toolkit](https://redux-toolkit.js.org/tutorials/quick-start)
+- [Redux DevTools extension for Chrome](https://chromewebstore.google.com/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+- [React DevTools extention for components](https://chromewebstore.google.com/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
