@@ -8,12 +8,12 @@ import PizzaBlock from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination/Pagination';
 import { SearchContext } from '../App';
-import { setCategoryId } from '../redux/slices/filterSlice';
+import { setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
 
 const Home = () => {
   const dispatch = useDispatch(); //хук доставания dispatch вместо store.dispatch и импорта
   //вытаскиваем значение categoryId и передаем в переменную
-  const { categoryId, sort } = useSelector((state) => state.filter);
+  const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
   const sortType = sort.sortProperty;
 
   const onChangeCategory = (id) => {
@@ -22,9 +22,12 @@ const Home = () => {
     // {type: 'filter/setCategoryId', payload: id}
   };
 
+  const onChangePage = (num) => {
+    dispatch(setCurrentPage(num));
+  };
+
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [currentPage, setCurrentPage] = React.useState(1);
 
   const { searchValue } = React.useContext(SearchContext);
 
@@ -35,16 +38,17 @@ const Home = () => {
 
     axios
       .get(
-        `https://665da1fee88051d6040799ed.mockapi.io/pizzas?page=${currentPage}&limit=8&${category}&sortBy=${sortType}&order=desc${search}`,
+        `https://665da1fee88051d6040799ed.mockapi.io/pizzas?page=${currentPage}&limit=12&${category}&sortBy=${sortType}&order=desc${search}`,
       )
       .then((responce) => {
         setItems(responce.data);
         setIsLoading(false);
       });
-    window.scrollTo(0, 0);
-  }, [categoryId, sortType, currentPage, searchValue]);
 
-  const skeletons = [...new Array(8)].map((_, id) => <Skeleton key={id} />);
+    window.scrollTo(0, 0);
+  }, [categoryId, sortType, searchValue, currentPage]);
+
+  const skeletons = [...new Array(12)].map((_, id) => <Skeleton key={id} />);
   const pizzas = items
     .filter((obj) => obj.title.toLowerCase().includes(searchValue.trim().toLowerCase()))
     .map((value) => <PizzaBlock key={value.id} {...value} />);
@@ -57,7 +61,7 @@ const Home = () => {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
-      <Pagination onChangePage={(num) => setCurrentPage(num)} />
+      <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
 };
