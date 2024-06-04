@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Categories from '../components/Categories';
@@ -29,19 +30,16 @@ const Home = () => {
 
   React.useEffect(() => {
     setIsLoading(true);
-
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
-    fetch(
-      `https://665da1fee88051d6040799ed.mockapi.io/pizzas?page=${currentPage}&limit=8&${category}&sortBy=${sortType}&order=desc${search}`,
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((arr) => {
-        setItems(arr);
+
+    axios
+      .get(
+        `https://665da1fee88051d6040799ed.mockapi.io/pizzas?page=${currentPage}&limit=8&${category}&sortBy=${sortType}&order=desc${search}`,
+      )
+      .then((responce) => {
+        setItems(responce.data);
         setIsLoading(false);
-        console.log('Массив пицц', arr);
       });
     window.scrollTo(0, 0);
   }, [categoryId, sortType, currentPage, searchValue]);
