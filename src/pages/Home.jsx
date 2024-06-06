@@ -17,6 +17,9 @@ const Home = () => {
   const dispatch = useDispatch();
   //хук доставания dispatch вместо store.dispatch и импорта
   //вытаскиваем значение categoryId и передаем в переменную
+  const isSearch = React.useRef(false);
+  const isMounted = React.useRef(false);
+
   const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
   const sortType = sort.sortProperty;
 
@@ -34,33 +37,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = React.useState(true);
   const { searchValue } = React.useContext(SearchContext);
 
-  React.useEffect(() => {
-    if (window.location.search) {
-      const params = qs.parse(window.location.search.substring(1));
-      // console.log(params);
-
-      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
-
-      dispatch(
-        setFilters({
-          ...params,
-          sort,
-        }),
-      );
-    }
-  }, []);
-
-  React.useEffect(() => {
-    const queryString = qs.stringify({
-      sortProperty: sort.sortProperty,
-      categoryId,
-      currentPage,
-    });
-
-    navigate(`?${queryString}`);
-  }, [categoryId, sortType, searchValue, currentPage]);
-
-  React.useEffect(() => {
+  const fetchPizzas = () => {
     setIsLoading(true);
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
@@ -75,6 +52,43 @@ const Home = () => {
       });
 
     window.scrollTo(0, 0);
+  };
+
+  React.useEffect(() => {
+    //вшивка параметров в адресную строчку при изменении фильтров
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
+
+      dispatch(
+        setFilters({
+          ...params,
+          sort,
+        }),
+      );
+      isSearch.current = true;
+    }
+  }, []);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    if (!isSearch.current) {
+      fetchPizzas();
+    }
+    isSearch.current = false;
+  }, [categoryId, sortType, searchValue, currentPage]);
+
+  React.useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        sortProperty: sort.sortProperty,
+        categoryId,
+        currentPage,
+      });
+
+      navigate(`?${queryString}`);
+    }
+    isMounted.current = true;
   }, [categoryId, sortType, searchValue, currentPage]);
 
   const skeletons = [...new Array(12)].map((_, id) => <Skeleton key={id} />);
