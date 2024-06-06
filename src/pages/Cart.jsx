@@ -96,8 +96,8 @@ const Cart = () => {
           <CartItem key={item.id} {...item} />
         ))}
       </div>
-      <div class="cart__bottom">
-        <div class="cart__bottom-details">
+      <div className="cart__bottom">
+        <div className="cart__bottom-details">
           <span>
             {' '}
             Всего пицц: <b>{totalCount} шт.</b>{' '}
@@ -107,8 +107,8 @@ const Cart = () => {
             Сумма заказа: <b>{totalPrice} р.</b>{' '}
           </span>
         </div>
-        <div class="cart__bottom-buttons">
-          <a href="/" class="button button--outline button--add go-back-btn">
+        <div className="cart__bottom-buttons">
+          <a href="/" className="button button--outline button--add go-back-btn">
             <svg
               width="8"
               height="14"
@@ -118,15 +118,15 @@ const Cart = () => {
               <path
                 d="M7 13L1 6.93015L6.86175 1"
                 stroke="#D3D3D3"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
 
             <span>Вернуться назад</span>
           </a>
-          <div class="button pay-btn">
+          <div className="button pay-btn">
             <span>Оплатить сейчас</span>
           </div>
         </div>
