@@ -55,7 +55,7 @@ const Home = () => {
   };
 
   React.useEffect(() => {
-    //вшивка параметров в адресную строчку при изменении фильтров
+    //сохранение URL параметров в redux
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
       const sort = list.find((obj) => obj.sortProperty === params.sortProperty);
