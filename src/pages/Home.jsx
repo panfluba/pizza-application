@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'qs';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Categories from '../components/Categories';
 import Sort, { list } from '../components/Sort';
@@ -92,7 +92,11 @@ const Home = () => {
   const skeletons = [...new Array(12)].map((_, id) => <Skeleton key={id} />);
   const pizzas = items
     .filter((obj) => obj.title.toLowerCase().includes(searchValue.trim().toLowerCase()))
-    .map((value) => <PizzaBlock key={value.id} {...value} />);
+    .map((value) => (
+      <Link key={value.id} to={`/pizzas/${value.id}`}>
+        <PizzaBlock {...value} />
+      </Link>
+    ));
 
   return (
     <div className="container">
