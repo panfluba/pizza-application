@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import qs from 'qs';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,7 +8,6 @@ import Sort, { list } from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination/Pagination';
-import { SearchContext } from '../App';
 import {
   selectFilter,
   setCategoryId,
@@ -31,12 +29,12 @@ const Home = () => {
 
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = (id) => {
-    dispatch(setCategoryId(id)); //  при клике на категорию получаем id, передаем в хранилище redux возращаемый setCategory(id) объект
+  const onChangeCategory = (index: number) => {
+    dispatch(setCategoryId(index)); //  при клике на категорию получаем id, передаем в хранилище redux возращаемый setCategory(id) объект
     // {type: 'filter/setCategoryId', payload: id}
   };
 
-  const onChangePage = (num) => {
+  const onChangePage = (num: number) => {
     dispatch(setCurrentPage(num));
   };
 
@@ -45,6 +43,7 @@ const Home = () => {
     const search = searchValue ? `&search=${searchValue}` : '';
 
     dispatch(
+      // @ts-ignore
       fetchPizzas({
         category,
         search,
@@ -91,8 +90,8 @@ const Home = () => {
 
   const skeletons = [...new Array(12)].map((_, id) => <Skeleton key={id} />);
   const pizzas = items
-    .filter((obj) => obj.title.toLowerCase().includes(searchValue.trim().toLowerCase()))
-    .map((value) => (
+    .filter((obj: any) => obj.title.toLowerCase().includes(searchValue.trim().toLowerCase()))
+    .map((value: any) => (
       <Link key={value.id} to={`/pizzas/${value.id}`}>
         <PizzaBlock {...value} />
       </Link>
