@@ -188,6 +188,22 @@ body {
             display: none;
           }
         }
+        &:disabled {
+          opacity: 0.4;
+
+          &:active {
+            transform: none;
+          }
+
+          &:hover {
+            background-color: transparent;
+            cursor: default;
+
+            svg path {
+              fill: #fe5f1e;
+            }
+          }
+        }
       }
 
       b {

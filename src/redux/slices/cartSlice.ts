@@ -1,6 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
-const initialState = {
+export type TCartItem = {
+  id: string;
+  title: string;
+  price: number;
+  image: string;
+  size: number;
+  type: number;
+  count: number;
+};
+
+interface ICartSliceState {
+  totalPrice: number;
+  items: TCartItem[];
+}
+
+const initialState: ICartSliceState = {
   // начальное состояние нашей сортировки
   totalPrice: 0,
   items: [],
@@ -30,7 +46,7 @@ const cartSlice = createSlice({
       }
     },
     removeItem(state, action) {
-      state.items.filter((obj) => obj.id !== action.payload);
+      state.items = state.items.filter((obj) => obj.id !== action.payload);
     },
     clearItems(state) {
       state.items = [];
@@ -39,7 +55,9 @@ const cartSlice = createSlice({
   },
 });
 
-export const selectCart = (state) => state.cart;
+export const selectCart = (state: RootState) => state.cart;
+export const selectCartItemById = (id: string) => (state: RootState) =>
+  state.cart.items.find((obj) => obj.id === id);
 
 export const { addItem, minusItem, removeItem, clearItems } = cartSlice.actions;
 

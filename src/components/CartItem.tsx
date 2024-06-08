@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import clsx from 'clsx';
 
-import { addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
+import { TCartItem, addItem, minusItem, removeItem } from '../redux/slices/cartSlice';
 
 type CartItemProps = {
   id: string;
@@ -23,8 +24,9 @@ export const CartItem: React.FC<CartItemProps> = ({
   size,
 }) => {
   const dispatch = useDispatch();
+
   const onClickPlus = () => {
-    dispatch(addItem({ id }));
+    dispatch(addItem({ id } as TCartItem));
   };
 
   const onClickMinus = () => {
@@ -34,8 +36,9 @@ export const CartItem: React.FC<CartItemProps> = ({
   };
 
   const onClickRemove = () => {
-    //@ts-ignore
-    if (window.confirm(`Убрать ${title} пиццу из корзины?`)) dispatch(removeItem());
+    if (window.confirm(`Убрать ${title} пиццу из корзины?`)) {
+      dispatch(removeItem(id));
+    }
   };
 
   return (
@@ -50,9 +53,12 @@ export const CartItem: React.FC<CartItemProps> = ({
         </p>
       </div>
       <div className="cart__item-count">
-        <div
-          onClick={count > 1 ? onClickMinus : undefined}
-          className="button button--outline button--circle cart__item-count-minus">
+        <button
+          disabled={count === 1}
+          onClick={onClickMinus}
+          className={clsx('button button--outline button--circle cart__item-count-minus', {
+            'cart__item-count-minus--disabled': count === 1,
+          })}>
           <svg
             width="10"
             height="10"
@@ -68,9 +74,9 @@ export const CartItem: React.FC<CartItemProps> = ({
               fill="#EB5A1E"
             />
           </svg>
-        </div>
+        </button>
         <b>{count}</b>
-        <div
+        <button
           onClick={onClickPlus}
           className="button button--outline button--circle cart__item-count-plus">
           <svg
@@ -88,7 +94,7 @@ export const CartItem: React.FC<CartItemProps> = ({
               fill="#EB5A1E"
             />
           </svg>
-        </div>
+        </button>
       </div>
       <div className="cart__item-price">
         <b>{price * count} p.</b>

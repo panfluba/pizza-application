@@ -24,11 +24,9 @@ const Search = () => {
   };
 
   const updateSearchValue = React.useCallback(
-    // add (str: string) => to delete warnings
-    (str: string) =>
-      debounce((str: string) => {
-        dispatch(setSearchValue(str));
-      }, 500),
+    debounce((str: string) => {
+      dispatch(setSearchValue(str));
+    }, 500),
     [],
   );
 
