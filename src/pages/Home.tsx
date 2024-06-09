@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
 
 import Categories from '../components/Categories';
@@ -30,10 +29,11 @@ const Home = () => {
 
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = (index: number) => {
-    dispatch(setCategoryId(index)); //  при клике на категорию получаем id, передаем в хранилище redux возращаемый setCategory(id) объект
-    // {type: 'filter/setCategoryId', payload: id}
-  };
+  const onChangeCategory = React.useCallback((index: number) => {
+    dispatch(setCategoryId(index));
+  }, []);
+  //  при клике на категорию получаем id, передаем в хранилище redux возращаемый setCategory(id) объект
+  // {type: 'filter/setCategoryId', payload: id}
 
   const onChangePage = (num: number) => {
     dispatch(setCurrentPage(num));
@@ -100,13 +100,13 @@ const Home = () => {
   const skeletons = [...new Array(12)].map((_, id) => <Skeleton key={id} />);
   const pizzas = items
     .filter((obj: any) => obj.title.toLowerCase().includes(searchValue.trim().toLowerCase()))
-    .map((value: any) => <PizzaBlock {...value} />);
+    .map((value: any) => <PizzaBlock key={value.id} {...value} />);
 
   return (
     <div className="container">
       <div className="content__top">
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-        <Sort />
+        <Sort value={sort} />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       {status === 'error' ? (
