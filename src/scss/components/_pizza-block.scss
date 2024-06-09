@@ -14,11 +14,11 @@
     width: 260px;
     transition: 0.5s ease-out;
 
-    &:hover {
-      transform: rotate(3deg);
-      scale: 1.02;
-    }
-    &:active {
+    &-animation {
+      &:hover {
+        transform: rotate(3deg);
+        scale: 1.02;
+      }
     }
   }
 

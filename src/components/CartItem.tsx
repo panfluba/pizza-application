@@ -97,7 +97,7 @@ export const CartItem: React.FC<CartItemProps> = ({
         </button>
       </div>
       <div className="cart__item-price">
-        <b>{price * count} p.</b>
+        <b>{+(price * count).toFixed(2)} p.</b>
       </div>
       <div className="cart__item-remove">
         <div onClick={onClickRemove} className="button button--outline button--circle">

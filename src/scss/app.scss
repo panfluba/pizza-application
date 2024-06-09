@@ -31,7 +31,7 @@ body {
   &__items {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 1fr;
     grid-column-gap: 11px;
     grid-row-gap: 0px;
 
@@ -322,7 +322,7 @@ body {
   }
 
   &--empty {
-    margin: 50px auto;
+    margin: 150px auto;
     width: 560px;
     text-align: center;
 

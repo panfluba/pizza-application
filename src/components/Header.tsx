@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -9,7 +10,17 @@ function Header() {
   const { items, totalPrice } = useSelector(selectCart);
   const totalCount = items.reduce((sum: number, item: { count: number }) => sum + item.count, 0);
   const location = useLocation();
+  const isMounted = React.useRef(false);
 
+  React.useEffect(() => {
+    if (isMounted.current) {
+      // проверка, чтобы не стиралась корзина при f5
+      const json = JSON.stringify(items); //преобразования объекта в строчку
+      localStorage.setItem('pizzas-cart', json);
+      // console.log(json);
+    }
+    isMounted.current = true;
+  }, [items]);
   return (
     <div className="header">
       <div className="container">

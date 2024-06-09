@@ -31,7 +31,7 @@ const Sort: React.FC<TSortProps> = React.memo(({ value }) => {
       if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
         setOpen(false);
       }
-      console.log(event);
+      // console.log(event);
     };
     document.body.addEventListener('click', handleClickOutside);
 

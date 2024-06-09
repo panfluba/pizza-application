@@ -13,7 +13,7 @@ export const store = configureStore({
   },
 });
 
-console.log(store.dispatch);
+// console.log(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 

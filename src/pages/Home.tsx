@@ -123,7 +123,7 @@ const Home = () => {
       ) : (
         <div className="content__items">{status === 'loading' ? skeletons : pizzas}</div>
       )}
-      <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+      {categoryId === 0 && <Pagination currentPage={currentPage} onChangePage={onChangePage} />}
     </div>
   );
 };
